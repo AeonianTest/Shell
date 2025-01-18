@@ -1,0 +1,11 @@
+#Files to ignore in the git repo
+
+#Mac
+*.DS_Store
+
+# Object files
+*.o
+
+# Executables
+*.exe
+*.out
