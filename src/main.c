@@ -66,3 +66,7 @@ void tokenise_inputs(char *input, char **args) {
     // Null terminate the argument list
     args[i] = NULL;  
 }
+
+void execute_command(char **args) {
+    
+}

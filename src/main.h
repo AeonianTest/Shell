@@ -8,6 +8,6 @@
 // Function declerations
 void shell_start(); // The main function responsible for handling user input
 void tokenise_inputs(char *input, char **args); // Turn a line of input into tokens
-void execute_inputs(char **args); // TODO: Handle the execution of the args (ie call the correct command and then ). 
+void execute_command(char **args); // TODO: Handle the execution of the args (ie call the correct command and then ). 
 
 #endif
