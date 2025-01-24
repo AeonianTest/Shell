@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "main.h"
+#include "cat.h"
 
 /*
     Core of the program
@@ -42,13 +43,16 @@ void shell_start() {
         // Parse the input here into tokens
         tokenise_inputs(input, args);
 
-        if (args[0] != NULL) { //TESTING
-            printf("Command entered: %s\n", args[0]);
+        if (args[0] != NULL) { // TESTING
+            printf("TESTING: args[0]: %s\n", args[0]);
         }
 
-        if (args[1] != NULL) { //TESTING
-            printf("Command entered: %s\n", args[1]);
+        if (args[1] != NULL) { // TESTING
+            printf("TESTING: args[1]: %s\n", args[1]);
         }
+
+        // Execute the command
+        execute_command(args);
     }
 }
 
@@ -67,6 +71,13 @@ void tokenise_inputs(char *input, char **args) {
     args[i] = NULL;  
 }
 
+// Handle the execution of the main command called
 void execute_command(char **args) {
-    
+    //Check for the given command
+    if (strcmp(args[0], "cat") == 0) {
+        cat(args[1]);
+    }
+    else {
+        printf("Invalid command %s\n", args[0]);
+    }
 }

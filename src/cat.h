@@ -2,6 +2,6 @@
 #define CAT_H
 
 // Function
-void cat(char* filename); // TODO: Print the contents of the file supplied
+void cat(char* filename); // Prints the contents of a file. TODO: More functionality
 
 #endif
