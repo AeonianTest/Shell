@@ -6,6 +6,9 @@
 # Object files
 *.o
 
+#VScode
+.vscode/
+
 # Executables
 *.exe
 *.out
