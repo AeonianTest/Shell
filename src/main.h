@@ -3,7 +3,7 @@
 
 // Macros
 #define BUFFER_SIZE 1024 // Buffer char size for input
-#define TOKENS_AMT 64 // Amount of tokens allowed in a line
+#define TOKENS_AMT 64 // Amount of tokens allowed in a line - 1 for null term
 
 // Function declerations
 void shell_start(); // The main function responsible for handling user input
