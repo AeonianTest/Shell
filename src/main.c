@@ -2,15 +2,15 @@
 #include <stdio.h>
 #include <string.h>
 #include "main.h"
-#include "cat.h"
-#include "echo.h"
+#include "builtins/cat.h"
+#include "builtins/echo.h"
 
 /*
     Core of the program
     MAIN TODO:
         - Relative navigation commands (ls, pwd, cd)
-        - Organise the built in command files
         - makefile for compilation into bin
+        - expand mvps
 */
 
 // Entry point to start running the program
@@ -48,13 +48,13 @@ void shell_start() {
         // Parse the input here into tokens
         tokenise_inputs(input, args);
 
-        if (args[0] != NULL) { // TESTING
-            printf("TESTING: args[0]: %s\n", args[0]);
-        }
+        // if (args[0] != NULL) { // TESTING
+        //     printf("TESTING: args[0]: %s\n", args[0]);
+        // }
 
-        if (args[1] != NULL) { // TESTING
-            printf("TESTING: args[1]: %s\n", args[1]);
-        }
+        // if (args[1] != NULL) { // TESTING
+        //     printf("TESTING: args[1]: %s\n", args[1]);
+        // }
 
         // Execute the command
         execute_command(args);
@@ -82,7 +82,7 @@ void execute_command(char **args) {
     if (strcmp(args[0], "cat") == 0) {
         cat(args[1]);
     }
-    if (strcmp(args[0], "echo") == 0) {
+    else if (strcmp(args[0], "echo") == 0) {
         echo(args);
     }
     else {
