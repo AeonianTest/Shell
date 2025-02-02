@@ -9,7 +9,6 @@
     Core of the program
     MAIN TODO:
         - Relative navigation commands (ls, pwd, cd)
-        - makefile for compilation into bin
         - expand mvps
 */
 
