@@ -4,7 +4,7 @@
 
 /*
     Implementaion of the unix cat command
-    To be compilied into the a signle executable with 
+    To be compilied into the a single executable with other source files
 */
 
 void cat(char* filename) { // MVP implementation of cat, expand as needed
