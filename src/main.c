@@ -4,6 +4,7 @@
 #include "main.h"
 #include "builtins/cat.h"
 #include "builtins/echo.h"
+#include "builtins/ls.h"
 
 /*
     Core of the program
@@ -83,6 +84,9 @@ void execute_command(char **args) {
     }
     else if (strcmp(args[0], "echo") == 0) {
         echo(args);
+    }
+    else if (strcmp(args[0], "ls") == 0) {
+        ls();
     }
     else {
         printf("Invalid command %s\n", args[0]);
