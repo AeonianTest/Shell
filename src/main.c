@@ -28,7 +28,7 @@ void shell_start() {
     // Always loop. Exits are manual breaks
     while (1) {
         // Display the shell prompt
-        printf("BACI Shell > ");
+        printf("BACI Shell %s>%s ", ANSI_COLOR_CYAN, ANSI_COLOR_RESET);
         fflush(stdout); 
 
         // Look for EOF or ctrl+d to exit the program
