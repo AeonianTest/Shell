@@ -87,7 +87,7 @@ void execute_command(char **args) {
         echo(args);
     }
     else if (strcmp(args[0], "ls") == 0) {
-        ls();
+        ls(args);
     }
     else if (strcmp(args[0], "cd") == 0) {
         cd(args[1]);

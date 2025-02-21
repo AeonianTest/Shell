@@ -7,23 +7,38 @@
     To be compilied into the a single executable with other source files
 */
 
-void ls() { // TODO: mvp implementation of the list directory contents command
-    //Get a ptr to the current relative dir and the declare a pointer to the struct representing dir
-    DIR *dirPtr = opendir("."); 
+void ls(char **args) { // mvp implementation of the list directory contents command
+    int i = 0;
+    args += 1;
     struct dirent *dirRead;
+    DIR *dirPtr;
 
-    // Return if unable to open the local directory
-    if (dirPtr == NULL) {
-        printf("Unable to open local dir\n");
-        return;
+    // Default to local dir if no arguments provided
+    if (args[0] == NULL) { 
+        args[0] = ".";
+        args[1] = NULL;
     }
 
-    // read then write the internals of the dir until no entries
-    while ((dirRead = readdir(dirPtr)) != NULL) {
-        printf("%s\n", dirRead->d_name);
-    }
+    while (args[i] != NULL) {  // Loop through dir args
+        dirPtr = opendir(args[i]);
 
-    //Return
-    closedir(dirPtr);
-    return;
+         // Print detailed error then continue to next arg
+        if (dirPtr == NULL) {
+            perror("ls");
+            i++;
+            continue; 
+        }
+
+        printf("%s:\n", args[i]);  // Print directory name
+
+        while ((dirRead = readdir(dirPtr)) != NULL) {
+            printf("%s\n", dirRead->d_name);
+        }
+
+        if (args[i+1] != NULL) 
+            printf("\n");
+
+        closedir(dirPtr);  // Close directory after reading
+        i++;
+    }
 }
