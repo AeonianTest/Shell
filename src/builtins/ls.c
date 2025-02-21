@@ -35,7 +35,7 @@ void ls(char **args) { // mvp implementation of the list directory contents comm
             printf("%s\n", dirRead->d_name);
         }
 
-        if (args[i+1] != NULL) 
+        if (args[i + 1] != NULL) 
             printf("\n");
 
         closedir(dirPtr);  // Close directory after reading

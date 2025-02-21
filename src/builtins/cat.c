@@ -7,21 +7,29 @@
     To be compilied into the a single executable with other source files
 */
 
-void cat(char* filename) { // MVP implementation of cat, expand as needed
-    FILE *file = fopen(filename, "r");
+void cat(char **args) { // MVP implementation of cat, expand as needed
+    int i = 0;
+    args += 1;
+    FILE *file;
+    
+    while (args[i] != NULL) {
+        file = fopen(args[i], "r");
 
-    //Attempt to open the file, early return if fail
-    if (file == NULL) {
-        printf("Unable to open file %s\n", filename);
-        return;
+        //Attempt to open the file, continue if fail
+        if (file == NULL) {
+            perror(args[i]);
+            i++;
+            continue;
+        }
+
+        // Read char from the file, format after
+        int c;
+        while ((c = fgetc(file)) != EOF) //Get unsigned char, then print the unsigned char to the output stream
+            putchar(c);
+        printf("\n");
+
+        // Close the file 
+        fclose(file);
+        i++; 
     }
-
-    // Read char from the file
-    char c;
-    while ((c = fgetc(file)) != EOF) //Get unsigned char, then print the unsigned char to the output stream
-        putchar(c);
-
-    // Format then close the file
-    putchar('\n');
-    fclose(file);
 }

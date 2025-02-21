@@ -81,7 +81,7 @@ void tokenise_inputs(char *input, char **args) {
 void execute_command(char **args) {
     //Check for the given command
     if (strcmp(args[0], "cat") == 0) {
-        cat(args[1]);
+        cat(args);
     }
     else if (strcmp(args[0], "echo") == 0) {
         echo(args);
