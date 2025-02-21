@@ -4,7 +4,7 @@
 CC = gcc 
 TARGET = BAci
 CFLAGS = -Wall -Wextra -ggdb
-SRC = src/main.c src/builtins/cat.c src/builtins/echo.c src/builtins/ls.c
+SRC = src/main.c src/builtins/cat.c src/builtins/echo.c src/builtins/ls.c src/builtins/cd.c
 OBJ = $(SRC:.c=.o)
 
 # Default target for the makefile, must construct the target bin prereq
