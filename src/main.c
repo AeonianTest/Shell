@@ -8,6 +8,7 @@
 #include "builtins/ls.h"
 #include "builtins/cd.h"
 #include "builtins/pwd.h"
+#include "builtins/touch.h"
 
 /*
     Core of the program
@@ -87,6 +88,9 @@ void execute_command(char **args) {
     }
     else if (strcmp(args[0], "pwd") == 0) {
         pwd();
+    }
+    else if (strcmp(args[0], "touch") == 0) {
+        touch(args);
     }
     else {
         printf("Invalid command %s\n", args[0]);
