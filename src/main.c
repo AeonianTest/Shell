@@ -6,6 +6,7 @@
 #include "builtins/echo.h"
 #include "builtins/ls.h"
 #include "builtins/cd.h"
+#include "builtins/pwd.h"
 
 /*
     Core of the program
@@ -91,6 +92,9 @@ void execute_command(char **args) {
     }
     else if (strcmp(args[0], "cd") == 0) {
         cd(args[1]);
+    }
+    else if (strcmp(args[0], "pwd") == 0) {
+        pwd();
     }
     else {
         printf("Invalid command %s\n", args[0]);
