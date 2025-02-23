@@ -12,8 +12,7 @@
 /*
     Core of the program
     MAIN TODO:
-        - Relative navigation commands (ls, pwd, cd)
-        - expand mvps
+        - File management cmds (rm touch)
 */
 
 // Entry point to start running the program
@@ -50,14 +49,6 @@ void shell_start() {
 
         // Parse the input here into tokens
         tokenise_inputs(input, args);
-
-        // if (args[0] != NULL) { // TESTING
-        //     printf("TESTING: args[0]: %s\n", args[0]);
-        // }
-
-        // if (args[1] != NULL) { // TESTING
-        //     printf("TESTING: args[1]: %s\n", args[1]);
-        // }
 
         // Execute the command
         execute_command(args);
