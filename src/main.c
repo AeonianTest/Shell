@@ -96,3 +96,7 @@ void execute_command(char **args) {
         printf("Invalid command %s\n", args[0]);
     }
 }
+
+void format_prompt() {
+    
+}
