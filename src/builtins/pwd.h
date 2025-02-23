@@ -5,6 +5,6 @@
 #define MAX_CWD_LENGTH 256
 
 // Functions
-void pwd(); 
+void pwd();
 
 #endif
