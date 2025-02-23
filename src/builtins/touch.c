@@ -11,32 +11,41 @@
 */
 
 void touch(char **args) {
-    // v0.2 bare min tm
     struct stat fileStat;
+    args += 1;
     int fileDesc;
+    int i = 0;
 
-    // Check if file exists, if true update access timestamps
-    if (stat(args[1], &fileStat) == 0) {
-        // File exists, update access time
-        if (utime(args[1], NULL) != 0) {
-            // If error occured in updating
-            perror("Error updating time stamps");
-        }
-        else {
-            printf("File %s already exists, updating timestamp\n", args[1]);
-        }
+    if (args[0] == NULL) {
+        fprintf(stderr, "touch: missing file operand\n");
+        return;
     }
-    else { // Else if 0 (Success) not returned by stat, file not exist so we can create it
-        // Open the file in write mode,
-        fileDesc = open(args[1], STD_OPEN_FLAGS, DEFAULT_PERMS);
-        
-        // Basic err handling
-        if (fileDesc < 0) {
-            perror("error creating file");
-            return;
+
+    // While arguments still exist
+    while (args[i] != NULL) {
+
+        // Check if file exists, if true update access timestamps
+        if (stat(args[i], &fileStat) == 0) {
+            // File exists, update access time
+            if (utime(args[i], NULL) != 0) {
+                // If error occured in updating
+                perror("Error updating time stamps");
+            }
+        }
+        else { // Else if 0 (Success) not returned by stat, file not exist so we can create it
+            // Open the file in write mode,
+            fileDesc = open(args[i], STD_OPEN_FLAGS, DEFAULT_PERMS);
+            
+            // Basic err handling
+            if (fileDesc < 0) {
+                perror("error creating file");
+                continue;;
+            }
+
+            // Close file on use
+            close(fileDesc);
         }
 
-        // Close file on use
-        close(fileDesc);
+        i++;
     }
 }
