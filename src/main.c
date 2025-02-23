@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "main.h"
 #include "builtins/cat.h"
 #include "builtins/echo.h"
@@ -28,8 +29,8 @@ void shell_start() {
 
     // Always loop. Exits are manual breaks
     while (1) {
-        // Display the shell prompt
-        printf("BACI Shell %s>%s ", ANSI_COLOR_CYAN, ANSI_COLOR_RESET);
+        //Print out the shell prompt
+        format_prompt();
         fflush(stdout); 
 
         // Look for EOF or ctrl+d to exit the program
@@ -101,6 +102,18 @@ void execute_command(char **args) {
     }
 }
 
+// Handle the output of the shell prompt to the terminal
 void format_prompt() {
-    
+    char currentDir[MAX_CWD_LENGTH];
+    char *finalSlashPtr;
+
+    // get the cwd, search for the current dir to display in Shell prompt
+    if (getcwd(currentDir, sizeof(currentDir)) != NULL) {
+        finalSlashPtr = strrchr(currentDir, '/');
+        printf("BACI %s %s>%s ", finalSlashPtr, ANSI_COLOR_CYAN, ANSI_COLOR_RESET);
+    }
+    else {
+        perror("Can't find dir");
+        printf("BACI /ERR %s>%s", ANSI_COLOR_CYAN, ANSI_COLOR_RESET);
+    }
 }

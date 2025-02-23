@@ -15,6 +15,6 @@ void pwd() {
         printf("%s\n", currentDir);
     }
     else {
-        perror("Error is accessing the directory");
+        perror("Error in accessing the directory");
     }
 }
