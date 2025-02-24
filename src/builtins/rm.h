@@ -4,6 +4,6 @@
 // Macros
 
 // Functions
-void rm();
+void rm(char **args);
 
-#endif 
+#endif

@@ -9,6 +9,7 @@
 #include "builtins/cd.h"
 #include "builtins/pwd.h"
 #include "builtins/touch.h"
+#include "builtins/rm.h"
 
 /*
     Core of the program
@@ -91,6 +92,9 @@ void execute_command(char **args) {
     }
     else if (strcmp(args[0], "touch") == 0) {
         touch(args);
+    }
+    else if (strcmp(args[0], "rm") == 0) {
+        rm(args);
     }
     else {
         printf("Invalid command %s\n", args[0]);
