@@ -15,3 +15,7 @@ to build the project into an binary executable `BAci`. In order to remove the bi
 Please note that the safest way to compile this project is to run 
 
     make clean && make
+
+## Inbuilt cmds
+
+Currently bare minimum support for commands are cat, cd, echo, ls, pwd, rm and touch. Please note that they not very sophisticated examples, and do not currently support any flags to enhance function currently.
